@@ -1,13 +1,69 @@
-body {
+*, *::after, *::before {
+  padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+  font-family: sans-serif;
+  scroll-behavior: smooth;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+:root {
+  --clr-main: hotpink;
+  --clr-sec: #222;
+
+  --header-height: 50px;
+
+  --clr-mn-blue: #355070;
+  --clr-chinese-violet: #6D597A;
+  --clr-cinnamon-satin: #B56576;
+  --clr-candy-pink: #E56B6F;
+  --clr-tumbleweed: #EAAC8B; 
+  --clr-clear: #fff;
+}
+
+a {
+  text-decoration: none;
+  color: var(--clr-clear);
+  position: relative;
+  cursor: pointer;
+}
+
+li 
+{
+  list-style: none;
+}
+
+h1, h2, h3 {
+  line-height: 1.3;
+}
+
+@keyframes rotate {
+  0% {transform: rotate(0);}
+  4% {transform: rotate(45deg);}
+  10% {transform: rotate(90deg);}
+  20% {transform: rotate(135deg);}
+  22% {transform: rotate(180deg);}
+  25% {transform: rotate(0deg);}
+}
+
+@keyframes bounce {
+  0%, 4%, 10%, 16%, 20% {transform: translateY(0);} 
+  8% {transform: translateY(-15px);} 
+  12% {transform: translateY(-7px);} 
+} 
+
+@media not (hover :hover), (max-width: 700px) {
+
+  .card p.card-title {
+    background-color: rgba(0,0,0,0.5);
+    box-shadow: 0 0 0 400px rgba(0,0,0,0.5);
+  }
+  .card p.card-content {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+  }
+
+  .cards
+  {
+    padding-bottom: calc(10% + 1em);
+  }
 }
