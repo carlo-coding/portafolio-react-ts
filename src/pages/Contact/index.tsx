@@ -14,11 +14,11 @@ export default function Contact(){
             <form className="form-container" method="post" action="https://formspree.io/f/xzbogowd">
                 <div className="input-container">
                     <label>Nombre</label>
-                    <input name="name" placeholder="Ingresa tu nombre" autoComplete="off"/>
+                    <input name="name" placeholder="Ingresa tu nombre" autoComplete="off" required/>
                 </div>
                 <div className="input-container">
                     <label>Email</label>
-                    <input name="email" placeholder="Ingresa tu correo" type="email" autoComplete="off"/>
+                    <input name="email" placeholder="Ingresa tu correo" type="email" autoComplete="off" required/>
                 </div>
                 <div className="input-container">
                     <label>Asunto</label>
