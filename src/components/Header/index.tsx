@@ -20,6 +20,11 @@ const menuContent = (
     <React.Fragment>
         <ul>
             <li>
+                <Link href="/blog">
+                    <a className="bottom-border">Blog</a>
+                </Link>
+            </li>
+            <li>
                 <Link href="/about">
                     <a className="bottom-border">Sobre mi</a>
                 </Link>

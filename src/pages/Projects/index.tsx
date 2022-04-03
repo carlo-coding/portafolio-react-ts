@@ -2,6 +2,7 @@ import { Box } from "@mui/material";
 import { styles_proyects } from "./styled";
 import encriptadorPNG from "../../chest/files/encriptador.png";
 import ahorcadoPNG from "../../chest/files/ahorcado.png";
+import videoMemePNG from "../../chest/files/videomeme_pic.png";
 
 export default function Projects(){
 
@@ -10,6 +11,19 @@ export default function Projects(){
             sx={styles_proyects}
         >
             <h2 className="regular-title">Proyectos</h2>
+            <div className="card-project">
+            <a target="_blank" href="https://videomeme.netlify.app/" className="image bottom-border" >
+                <img src={ videoMemePNG } alt="encriptador png" />
+            </a>
+            <div className="description">
+                <h3>Proyecto Video Llamada</h3>
+                <p>
+                    Un proyecto usando WebRTC en react y typescript usando una clean architecture
+                </p>
+                <a className="proyect-link" target="_blank" href="https://videomeme.netlify.app/">Visitar</a>
+            </div>
+            </div>
+
             <div className="card-project">
             <a target="_blank" href="https://carlo-coding.github.io/Challenge-One-Next-Encriptador/" className="image bottom-border" >
                 <img src={ encriptadorPNG } alt="encriptador png" />

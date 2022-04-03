@@ -9,6 +9,8 @@ import Hobbies from '../../pages/Hobbies';
 import Education from '../../pages/Education';
 import Projects from '../../pages/Projects';
 import Contact from '../../pages/Contact';
+import Blog from '../../pages/Blog';
+import BlogPost from '../../pages/Blog/BlogPost';
 
 function App() {
   return (
@@ -33,6 +35,12 @@ function App() {
       </Route>
       <Route path="/contact">
         <Contact />
+      </Route>
+      <Route path='/blog'>
+        <Blog />
+      </Route> 
+      <Route path='/blogpost/:id'>
+        <BlogPost />
       </Route>
     </Layout>
   );
