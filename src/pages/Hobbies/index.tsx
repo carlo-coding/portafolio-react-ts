@@ -1,42 +1,38 @@
 import { Box } from "@mui/material";
-import { styles_hobbies } from "./styled"; // ../../chest/files/
+import { styles_hobbies } from "./styled";
 import { ObserverList, ObservedItem } from "../../components/IntsObserver";
+import { useQuery } from "@apollo/client";
+import { GET_HOBBIES } from "../../queries/hobbies.queries";
 
-import valoPNG from "../../chest/files/valo.png";
-import steinsJPG from "../../chest/files/steins.jpg";
-import fantasyJPG from "../../chest/files/fantasy.jpg";
-import daftJPG from "../../chest/files/daft.jpg";
-
-
-export default function Hobbies(){
-
-
-    return (
-        <Box 
-            sx={styles_hobbies}
-        >
-        <h2 className="regular-title">Mis Hobbies</h2>
-            <ObserverList toggleClass="show">
-                {({ saveItem }: any)=>(<>
-                    <ObservedItem saveItem={saveItem}>
-                        <p>Videojuegos</p>
-                        <img src={ valoPNG } alt="Videojuegos" />
-                    </ObservedItem>
-                    <ObservedItem saveItem={saveItem}>
-                        <p>Ciencia ficción</p>
-                        <img src={ steinsJPG } alt="Ciencia ficción" />
-                    </ObservedItem>
-                    <ObservedItem saveItem={saveItem}>
-                        <p>Libros de fantasía</p>
-                        <img src={ fantasyJPG } alt="Libros de fantasía" />
-                    </ObservedItem>
-                    <ObservedItem saveItem={saveItem}>
-                        <p>Música</p>
-                        <img src={ daftJPG } alt="Música" />        
-                    </ObservedItem>
-                </>)}
-            </ObserverList>
-        </Box>
-    )
+interface IHobbie {
+  id: string;
+  title: string;
+  image: {
+    url: string;
+  };
 }
 
+export default function Hobbies() {
+  const { error, loading, data } = useQuery(GET_HOBBIES);
+
+  if (loading) return <>Loading ...</>;
+  if (error) return <>Something went wrong</>;
+
+  return (
+    <Box sx={styles_hobbies}>
+      <h2 className="regular-title">My Hobbies</h2>
+      <ObserverList toggleClass="show">
+        {({ saveItem }: any) => (
+          <>
+            {data.hobbies.map((hobbie: IHobbie) => (
+              <ObservedItem saveItem={saveItem}>
+                <p>{hobbie.title}</p>
+                <img src={hobbie.image.url} alt={hobbie.title} />
+              </ObservedItem>
+            ))}
+          </>
+        )}
+      </ObserverList>
+    </Box>
+  );
+}

@@ -1,32 +1,37 @@
 import { Box } from "@mui/material";
 import { styles_education } from "./styled";
 import { ObserverList, ObservedItem } from "../../components/IntsObserver";
+import { useQuery } from "@apollo/client";
+import { GET_EDUCATIONS } from "../../queries/educations.queries";
 
-import freecodeJPG from "../../chest/files/freecode.jpg";
-import campusLogoPNG from "../../chest/files/campus-logo.png";
-import aluraPNG from "../../chest/files/alura.png";
+interface IEducation {
+  id: string;
+  title: string;
+  image: {
+    url: string;
+  };
+}
 
-export default function Education(){
+export default function Education() {
+  const { loading, error, data } = useQuery(GET_EDUCATIONS);
 
-    return (
-        <Box
-            sx={styles_education}
-        >
-            <h2 className="regular-title">Formación</h2>
-            <ObserverList toggleClass="show" className="cards">
-                {({ saveItem }: any)=> (<>
-                    <ObservedItem saveItem={saveItem} className="card">
-                        <img src={ freecodeJPG } alt="Freecodecamp_logo" />
-                    </ObservedItem>
-                    <ObservedItem saveItem={saveItem} className="card">
-                        <img src={ campusLogoPNG } alt="bicentenario_logo" />
-                    </ObservedItem>
-                    <ObservedItem saveItem={saveItem} className="card">
-                        <img src={ aluraPNG } alt="Alura Latam logo" />
-                    </ObservedItem>
-                
-                </>)}
-            </ObserverList>
-        </Box>
-    )
+  if (loading) return <>Loading ...</>;
+  if (error) return <>Something went wrong</>;
+
+  return (
+    <Box sx={styles_education}>
+      <h2 className="regular-title">Formación</h2>
+      <ObserverList toggleClass="show" className="cards">
+        {({ saveItem }: any) => (
+          <>
+            {data.educations.map((edu: IEducation) => (
+              <ObservedItem saveItem={saveItem} className="card">
+                <img src={edu.image.url} alt={edu.title} />
+              </ObservedItem>
+            ))}
+          </>
+        )}
+      </ObserverList>
+    </Box>
+  );
 }

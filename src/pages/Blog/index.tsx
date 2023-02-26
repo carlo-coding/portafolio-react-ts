@@ -1,38 +1,60 @@
-import { useEffect, useRef } from "react";
-import { useLocation, useRoute, useRouter } from "wouter";
-import { genId } from "../../chest/utils";
+import { useQuery } from "@apollo/client";
+import { useLocation } from "wouter";
+import { formatToRelative } from "../../chest/utils";
+import { GET_POSTS } from "../../queries/post.queries";
 import { BlogStyled } from "./styled";
-import temp_blogs from "./temp_blogs";
 
+interface Image {
+  url: string;
+}
 
-interface BlogContent {
-    id: string,
-    title: string,
-    timeStamp: string,
-    html: string,
-    mainImage: string,
-} 
+interface Content {
+  document: any;
+}
 
+interface Author {
+  name: string;
+  email: string;
+}
+interface PostItem {
+  id: string;
+  content: Content;
+  image: Image;
+  author: Author;
+  tags: any[];
+}
+interface PostContent {
+  id: string;
+  title: string;
+  front: Image;
+  items: PostItem[];
+  createdAt: string;
+}
 
 export default function Blog() {
+  const [, setLocation] = useLocation();
+  const handleClick = (id: string) => () => {
+    setLocation?.(`/blogpost/${id}`);
+  };
 
-    const [,setLocation] = useLocation();
-
-    const handleClick = (id: string) => ()=>  {
-        setLocation?.(`/blogpost/${id}`)
-    }
-
-    return (
-        <BlogStyled>
-            {temp_blogs.map((temp_blog: BlogContent)=> (
-                <div key={temp_blog.id} className="presentation_container" onClick={handleClick(temp_blog.id)}>
-                    <img src={temp_blog.mainImage} alt="blog-main-image"/>
-                    <div>
-                    <h3 className="bottom-border">{temp_blog.title}</h3>
-                    <small>{temp_blog.timeStamp}</small>
-                    </div>
-                </div>
-            ))}
-        </BlogStyled>
-    )
+  const { data, error, loading } = useQuery(GET_POSTS);
+  if (loading) return <>Loading ...</>;
+  if (error) return <p>Something went wrong</p>;
+  return (
+    <BlogStyled>
+      {data.posts.map((post: PostContent) => (
+        <div
+          key={post.id}
+          className="presentation_container"
+          onClick={handleClick(post.id)}
+        >
+          <img src={post.front.url} alt={post.title} />
+          <div>
+            <h3 className="bottom-border">{post.title}</h3>
+            <small>{formatToRelative(post.createdAt)}</small>
+          </div>
+        </div>
+      ))}
+    </BlogStyled>
+  );
 }
