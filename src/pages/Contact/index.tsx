@@ -5,20 +5,19 @@ import phonePNG from "../../chest/files/phone.png";
 export default function Contact() {
   return (
     <Box sx={styles_contact}>
-      <h2 className="regular-title">Contacto</h2>
+      <h2 className="regular-title">Contact</h2>
       <div className="form-container">
         <img src={phonePNG} alt="phone" />
         <form
           className="form-container"
-          name="contact"
-          method="POST"
-          data-netlify="true"
+          method="post"
+          action="https://formspree.io/f/xzbogowd"
         >
           <div className="input-container">
-            <label>Nombre</label>
+            <label>Name</label>
             <input
               name="name"
-              placeholder="Ingresa tu nombre"
+              placeholder="Enter your name"
               autoComplete="off"
               required
             />
@@ -27,26 +26,26 @@ export default function Contact() {
             <label>Email</label>
             <input
               name="email"
-              placeholder="Ingresa tu correo"
+              placeholder="Enter your email"
               type="email"
               autoComplete="off"
               required
             />
           </div>
           <div className="input-container">
-            <label>Asunto</label>
-            <input name="matter" placeholder="Asunto" autoComplete="off" />
+            <label>Subject</label>
+            <input name="matter" placeholder="Subject" autoComplete="off" />
           </div>
           <div className="input-container">
-            <label>Mensaje</label>
+            <label>Message</label>
             <textarea
               name="message"
-              placeholder="Ingresa tu mensaje"
+              placeholder="Write here your message"
               autoComplete="off"
             ></textarea>
           </div>
           <button className="contact-button" type="submit">
-            Contactar
+            Contact
           </button>
         </form>
       </div>
