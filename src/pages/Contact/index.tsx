@@ -8,7 +8,12 @@ export default function Contact() {
       <h2 className="regular-title">Contacto</h2>
       <div className="form-container">
         <img src={phonePNG} alt="phone" />
-        <form className="form-container" method="post" data-netlify="true">
+        <form
+          className="form-container"
+          name="contact"
+          method="POST"
+          data-netlify="true"
+        >
           <div className="input-container">
             <label>Nombre</label>
             <input
