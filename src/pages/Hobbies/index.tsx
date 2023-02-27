@@ -7,7 +7,7 @@ import { GET_HOBBIES } from "../../queries/hobbies.queries";
 interface IHobbie {
   id: string;
   title: string;
-  image: {
+  image?: {
     url: string;
   };
 }
@@ -27,7 +27,7 @@ export default function Hobbies() {
             {data.hobbies.map((hobbie: IHobbie) => (
               <ObservedItem saveItem={saveItem}>
                 <p>{hobbie.title}</p>
-                <img src={hobbie.image.url} alt={hobbie.title} />
+                <img src={hobbie.image?.url} alt={hobbie.title} />
               </ObservedItem>
             ))}
           </>

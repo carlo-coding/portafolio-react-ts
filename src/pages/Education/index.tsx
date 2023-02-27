@@ -7,7 +7,7 @@ import { GET_EDUCATIONS } from "../../queries/educations.queries";
 interface IEducation {
   id: string;
   title: string;
-  image: {
+  image?: {
     url: string;
   };
 }
@@ -26,7 +26,7 @@ export default function Education() {
           <>
             {data.educations.map((edu: IEducation) => (
               <ObservedItem saveItem={saveItem} className="card">
-                <img src={edu.image.url} alt={edu.title} />
+                <img src={edu.image?.url} alt={edu.title} />
               </ObservedItem>
             ))}
           </>

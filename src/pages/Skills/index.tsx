@@ -10,7 +10,7 @@ interface ISkill {
   name: string;
   color: string;
   description: string;
-  image: {
+  image?: {
     url: string;
   };
 }
@@ -46,7 +46,7 @@ export default function Skills() {
               }}
             >
               <img
-                src={skill.image.url}
+                src={skill.image?.url}
                 alt={skill.name}
                 width="100%"
                 height="100%"

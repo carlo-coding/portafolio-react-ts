@@ -26,7 +26,7 @@ interface PostItem {
 interface PostContent {
   id: string;
   title: string;
-  front: Image;
+  front?: Image;
   items: PostItem[];
   createdAt: string;
 }
@@ -48,7 +48,7 @@ export default function Blog() {
           className="presentation_container"
           onClick={handleClick(post.id)}
         >
-          <img src={post.front.url} alt={post.title} />
+          <img src={post.front?.url} alt={post.title} />
           <div>
             <h3 className="bottom-border">{post.title}</h3>
             <small>{formatToRelative(post.createdAt)}</small>

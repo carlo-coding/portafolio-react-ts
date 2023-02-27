@@ -8,7 +8,7 @@ import { DocumentRenderer } from "@keystone-6/document-renderer";
 export interface Item {
   id: string;
   content: Content;
-  image: Image;
+  image?: Image;
 }
 
 export interface Content {
@@ -39,7 +39,7 @@ export default function BlogPost() {
           }}
         >
           <img
-            src={data.post.front.url}
+            src={data.post.front?.url}
             alt={data.post.title}
             width="100%"
             height="100%"
@@ -64,7 +64,7 @@ export default function BlogPost() {
                 },
               }}
             >
-              <img src={item.image.url} alt={data.post.title} />
+              <img src={item.image?.url} alt={data.post.title} />
             </Box>
           </Box>
         ))}

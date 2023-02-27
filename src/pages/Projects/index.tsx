@@ -10,7 +10,7 @@ interface IProject {
     document: any;
   };
   link: string;
-  image: {
+  image?: {
     url: string;
   };
   tags: Array<{
@@ -36,7 +36,7 @@ export default function Projects() {
             className="image bottom-border"
             rel="noreferrer"
           >
-            <img src={project.image.url} alt={project.title} />
+            <img src={project.image?.url} alt={project.title} />
           </a>
           <div className="description">
             <h3>{project.title}</h3>
