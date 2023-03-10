@@ -7,7 +7,7 @@ export const styles_layout: SxProps = {
   width: "100%",
   backgroundColor: "var(--clr-sec)",
   flexDirection: "column",
-  padding: "0 6%",
+  padding: "0 8%",
   paddingTop: "var(--header-height)",
 
   " .bottom-border:hover::after": {

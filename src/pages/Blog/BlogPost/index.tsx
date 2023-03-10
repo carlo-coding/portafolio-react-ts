@@ -33,7 +33,7 @@ export default function BlogPost() {
         <Box
           sx={{
             "& img": {
-              height: "40vh",
+              height: "50vh",
               objectFit: "cover",
             },
           }}
@@ -52,7 +52,12 @@ export default function BlogPost() {
             sx={{
               display: "flex",
               flexDirection: "column",
-              gap: "10px",
+              gap: "15px",
+              li: {
+                listStylePosition: "inside",
+                listStyleType: "circle",
+                margin: "0.3em 0",
+              },
             }}
           >
             <DocumentRenderer document={item.content.document} />
@@ -64,7 +69,9 @@ export default function BlogPost() {
                 },
               }}
             >
-              <img src={item.image?.url} alt={data.post.title} />
+              {item.image && (
+                <img src={item.image?.url} alt={data.post.title} />
+              )}
             </Box>
           </Box>
         ))}
