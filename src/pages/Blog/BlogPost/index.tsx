@@ -4,6 +4,7 @@ import { useRoute } from "wouter";
 import { GET_POST } from "../../../queries/post.queries";
 import { BlogPostStyled } from "./styled";
 import { DocumentRenderer } from "@keystone-6/document-renderer";
+import { useEffect } from "react";
 
 export interface Item {
   id: string;
@@ -24,6 +25,28 @@ export default function BlogPost() {
   const { error, loading, data } = useQuery(GET_POST, {
     variables: { id: params?.id || "sure" },
   });
+
+  useEffect(() => {
+    const preElements = Array.from(document.querySelectorAll("pre"));
+    const cleanFunctions = preElements.map((pre) => {
+      const copyButton = document.createElement("button");
+      copyButton.innerText = "Copy Code";
+      copyButton.classList.add("copy-button");
+
+      pre.insertBefore(copyButton, pre.firstChild);
+
+      function copyCode() {
+        navigator.clipboard.writeText(pre.childNodes[1]?.textContent || "");
+      }
+
+      copyButton.addEventListener("click", copyCode);
+
+      return () => pre.removeChild(copyButton);
+    });
+
+    return () => cleanFunctions.forEach((c) => c());
+  }, [data]);
+
   if (loading) return <>Loading ...</>;
   if (error) return <>Something went wrong</>;
 
@@ -53,11 +76,6 @@ export default function BlogPost() {
               display: "flex",
               flexDirection: "column",
               gap: "15px",
-              li: {
-                listStylePosition: "inside",
-                listStyleType: "circle",
-                margin: "0.3em 0",
-              },
             }}
           >
             <DocumentRenderer document={item.content.document} />
@@ -65,6 +83,7 @@ export default function BlogPost() {
               sx={{
                 "& img": {
                   maxHeight: "400px",
+                  maxWidth: "100%",
                   objectFit: "contain",
                 },
               }}

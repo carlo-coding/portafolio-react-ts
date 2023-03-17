@@ -1,5 +1,5 @@
 import React from "react";
-import { Route } from "wouter";
+import { Route, useLocation } from "wouter";
 import Info from "../../pages/Info";
 import Layout from "../Layout";
 import About from "../../pages/About";
@@ -19,6 +19,10 @@ const client = new ApolloClient({
 });
 
 function App() {
+  const [location] = useLocation();
+  React.useEffect(() => {
+    window.scrollTo({ top: 0 });
+  }, [location]);
   return (
     <ApolloProvider client={client}>
       <Layout>

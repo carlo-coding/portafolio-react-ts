@@ -1,6 +1,6 @@
 import { useQuery } from "@apollo/client";
 import { useLocation } from "wouter";
-import { formatToRelative } from "../../chest/utils";
+import { formatToRelative, sortObjectsByCreatedAt } from "../../chest/utils";
 import { GET_POSTS } from "../../queries/post.queries";
 import { BlogStyled } from "./styled";
 
@@ -42,7 +42,7 @@ export default function Blog() {
   if (error) return <p>Something went wrong</p>;
   return (
     <BlogStyled>
-      {data.posts.map((post: PostContent) => (
+      {sortObjectsByCreatedAt(data.posts).map((post: PostContent) => (
         <div
           key={post.id}
           className="presentation_container"
@@ -50,7 +50,7 @@ export default function Blog() {
         >
           <img src={post.front?.url} alt={post.title} />
           <div>
-            <h3 className="bottom-border">{post.title}</h3>
+            <h3>{post.title}</h3>
             <small>{formatToRelative(post.createdAt)}</small>
           </div>
         </div>
