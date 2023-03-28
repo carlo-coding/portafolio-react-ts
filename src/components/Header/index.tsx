@@ -38,13 +38,13 @@ const menuContent = (
           </a>
         </Link>
       </li>
-      <li>
+      {/* <li>
         <Link href="/education">
           <a className="bottom-border" href="/education">
             Education
           </a>
         </Link>
-      </li>
+      </li> */}
       <li>
         <Link href="/projects">
           <a className="bottom-border" href="/projects">
@@ -52,10 +52,17 @@ const menuContent = (
           </a>
         </Link>
       </li>
-      <li>
+      {/* <li>
         <Link href="/contact">
           <a className="bottom-border" href="/contact">
             Contact
+          </a>
+        </Link>
+      </li> */}
+      <li>
+        <Link href="/creative">
+          <a className="bottom-border" href="/creative">
+            Creative
           </a>
         </Link>
       </li>

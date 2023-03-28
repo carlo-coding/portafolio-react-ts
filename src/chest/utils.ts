@@ -20,6 +20,7 @@ export function formatToRelative(dateString: string): string {
   }
 }
 export function sortObjectsByCreatedAt(objects: any[]) {
+  if (!objects) return [];
   return objects.slice().sort((a: any, b: any) => {
     const dateA = new Date(a.createdAt);
     const dateB = new Date(b.createdAt);

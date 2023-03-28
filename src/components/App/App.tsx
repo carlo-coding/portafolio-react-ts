@@ -12,6 +12,8 @@ import Contact from "../../pages/Contact";
 import Blog from "../../pages/Blog";
 import BlogPost from "../../pages/Blog/BlogPost";
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
+import Creative from "../../pages/Creative";
+import CreativePost from "../../pages/Creative/CreativePost";
 
 const client = new ApolloClient({
   uri: process.env.REACT_APP_API_URL,
@@ -52,6 +54,12 @@ function App() {
         </Route>
         <Route path="/blogpost/:id">
           <BlogPost />
+        </Route>
+        <Route path="/creative">
+          <Creative />
+        </Route>
+        <Route path="/creativepost/:id">
+          <CreativePost />
         </Route>
       </Layout>
     </ApolloProvider>

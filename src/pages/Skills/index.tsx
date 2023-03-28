@@ -29,7 +29,7 @@ export default function Skills() {
               component="p"
               className="card-title"
               sx={{
-                "--clr-card": skill.color || "var(--clr-mn-blue)",
+                "--clr-card": skill.color || "var(--clr-sec2)",
               }}
             >
               {skill.name}

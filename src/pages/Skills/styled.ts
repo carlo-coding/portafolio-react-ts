@@ -10,7 +10,7 @@ export const styles_skills: SxProps = {
     gap: "10px",
   },
   " .card": {
-    "--clr-card": "var(--clr-mn-blue)",
+    "--clr-card": "var(--clr-sec2)",
     position: "relative",
     width: "300px",
     overflow: "hidden",
