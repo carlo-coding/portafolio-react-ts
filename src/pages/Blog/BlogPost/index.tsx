@@ -32,18 +32,13 @@ export default function BlogPost() {
       const copyButton = document.createElement("button");
       copyButton.innerText = "Copy Code";
       copyButton.classList.add("copy-button");
-
       pre.insertBefore(copyButton, pre.firstChild);
-
       function copyCode() {
         navigator.clipboard.writeText(pre.childNodes[1]?.textContent || "");
       }
-
       copyButton.addEventListener("click", copyCode);
-
       return () => pre.removeChild(copyButton);
     });
-
     return () => cleanFunctions.forEach((c) => c());
   }, [data]);
 

@@ -18,11 +18,11 @@ export default function Footer() {
         </div>
         carlo-coding
       </a>
-      <a href="mailto:jaanc.rt@gmail.com" target="_blank" rel="noreferrer">
+      <a href="mailto:info@jaancrt.com" target="_blank" rel="noreferrer">
         <div className="contact-icon">
           <MailIcon />
         </div>
-        jaanc.rt@gmail.com
+        info@jaancrt.com
       </a>
       <a
         href="https://www.linkedin.com/in/jaan-carlo/"

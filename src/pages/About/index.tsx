@@ -6,7 +6,7 @@ import { DocumentRenderer } from "@keystone-6/document-renderer";
 
 export default function About() {
   const { error, loading, data } = useQuery(GET_USER, {
-    variables: { email: "jaanc.rt@gmail.com" },
+    variables: { email: "info@jaancrt.com" },
   });
   if (loading) return <>Loading ...</>;
   if (error) return <>Something went wrong</>;
